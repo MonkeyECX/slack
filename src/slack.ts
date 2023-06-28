@@ -150,7 +150,7 @@ export async function send(
   const shortSha = sha.slice(0, 8)
   const branch = process.env.GITHUB_HEAD_REF || (process.env.GITHUB_REF?.replace('refs/heads/', '') as string)
   const refType = process.env.GITHUB_REF_TYPE
-  const actor = process.env.GITHUB_ACTOR
+  const actor = process.env.GITHUB_TRIGGERING_ACTOR
 
   let payload
   let action

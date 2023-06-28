@@ -127,7 +127,7 @@ function run() {
                 core.info(`Sent ${jobName} status of ${jobStatus} to Slack!`);
             }
             else {
-                core.warning('No "SLACK_WEBHOOK_URL"s secret or "webhook-url" input configured. Skip.');
+                core.warning('No "SLACK_WEBHOOK_URL"s env or "webhook-url" input configured. Skip.');
             }
         }
         catch (error) {
@@ -232,7 +232,7 @@ function send(url, jobName, jobStatus, jobSteps, channel, message, opts) {
         const shortSha = sha.slice(0, 8);
         const branch = process.env.GITHUB_HEAD_REF || ((_a = process.env.GITHUB_REF) === null || _a === void 0 ? void 0 : _a.replace('refs/heads/', ''));
         const refType = process.env.GITHUB_REF_TYPE;
-        const actor = process.env.GITHUB_ACTOR;
+        const actor = process.env.GITHUB_TRIGGERING_ACTOR;
         let payload;
         let action;
         let ref = branch;
